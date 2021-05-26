@@ -1,6 +1,11 @@
 # create_user.sh
 #!/bin/bash
 
+ROLE=TKG
+USER=tkg-user
+DOMAIN=vsphere.local
+PASSWORD='VMware1!'
+
 GOVC=$(which govc)
 if [ $? -ne 0 ]
   then
@@ -13,12 +18,6 @@ if [ -z "$GOVC_URL" ] || [ -z "$GOVC_USERNAME" ]  || [ -z "$GOVC_PASSWORD" ]
     >&2 echo "govc is not configured, this is a prerequisite for this script to work"
     exit 1
 fi
-
-ROLE=TKG
-USER=tkg-user
-DOMAIN=vsphere.local
-PASSWORD='VMware1!'
-DATACENTER=Datacenter
 
 cat > role_tkg.txt <<'endmsg'
 Cns.Searchable
